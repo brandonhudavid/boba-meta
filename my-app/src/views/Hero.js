@@ -16,6 +16,7 @@
 
 */
 import React from "react";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
 // reactstrap components
 import { Button, Container, Row, Col } from "reactstrap";
@@ -29,7 +30,7 @@ class Hero extends React.Component {
           <section className="section section-lg section-hero section-shaped">
             {/* Background circles */}
             <div className="shape shape-style-1 shape-default">
-              <span className="span-150" />
+              {/* <span className="span-150" />
               <span className="span-50" />
               <span className="span-50" />
               <span className="span-75" />
@@ -38,7 +39,7 @@ class Hero extends React.Component {
               <span className="span-50" />
               <span className="span-100" />
               <span className="span-50" />
-              <span className="span-100" />
+              <span className="span-100" /> */}
             </div>
             <Container className="shape-container d-flex align-items-center py-lg">
               <div className="col px-0">
@@ -62,21 +63,23 @@ class Hero extends React.Component {
                             THE BOBA META
                         </span>
                       </Button>{" "}
-                      <Button
-                        className="btn-icon mb-3 mb-sm-0"
-                        color="github"
-                        href="https://github.com/creativetimofficial/argon-design-system-react"
-                        size="lg"
-                        target="_blank"
-                      >
-                        {/* <span className="btn-inner--icon mr-1">
-                          <i className="fa fa-github" />
-                        </span> */}
-                        <span className="btn-inner--text">
-                          <span className="text-warning mr-1">CREATE</span>
-                          A TIER LIST
-                        </span>
-                      </Button>
+                      <Link to={"/make"}>
+                        <Button
+                            className="btn-icon mb-3 mb-sm-0"
+                            color="github"
+                            href="https://github.com/creativetimofficial/argon-design-system-react"
+                            size="lg"
+                            target="_blank"
+                        >
+                            {/* <span className="btn-inner--icon mr-1">
+                            <i className="fa fa-github" />
+                            </span> */}
+                            <span className="btn-inner--text">
+                            <span className="text-warning mr-1">MAKE</span>
+                            A TIER LIST
+                            </span>
+                        </Button>
+                      </Link>
                     </div>
                     {/* <div className="mt-5">
                       <small className="text-white font-weight-bold mb-0 mr-2">

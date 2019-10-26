@@ -21,7 +21,7 @@ import React from "react";
 import { Container, Row } from "reactstrap";
 
 // core components
-import DemoNavbar from "components/Navbars/DemoNavbar.jsx";
+// import DemoNavbar from "components/Navbars/DemoNavbar.jsx";
 import CardsFooter from "components/Footers/CardsFooter.jsx";
 
 // index page sections
@@ -48,6 +48,7 @@ import CardsFooter from "components/Footers/CardsFooter.jsx";
 
 // CalHacks 6.0
 import Hero from "./Hero.js";
+import Navbar from "./Navbar.js";
 
 class Index extends React.Component {
   componentDidMount() {
@@ -58,7 +59,7 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        <DemoNavbar />
+        <Navbar />
         <main ref="main">
           <Hero />
           {/* <Buttons />

@@ -28,6 +28,7 @@ import Landing from "views/examples/Landing.jsx";
 import Login from "views/examples/Login.jsx";
 import Profile from "views/examples/Profile.jsx";
 import Register from "views/examples/Register.jsx";
+import MakeTierListMap from "views/MakeTierListMap";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -48,6 +49,10 @@ ReactDOM.render(
         path="/register-page"
         exact
         render={props => <Register {...props} />}
+      />
+      <Route
+        path="/make"
+        component={MakeTierListMap} />}
       />
       <Redirect to="/" />
     </Switch>
