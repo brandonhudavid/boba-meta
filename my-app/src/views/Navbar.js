@@ -58,7 +58,7 @@ class DemoNavbar extends React.Component {
               <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
                 <img
                   alt="..."
-                  src={require("assets/img/brand/argon-react-white.png")}
+                  src={require("assets/img/brand/bobameta-logo.png")}
                 />
               </NavbarBrand>
               <button className="navbar-toggler" id="navbar_global">
@@ -87,9 +87,9 @@ class DemoNavbar extends React.Component {
                   <UncontrolledDropdown nav>
                     <DropdownToggle nav>
                       <i className="ni ni-ui-04 d-lg-none mr-1" />
-                      <span className="nav-link-inner--text">Components</span>
+                      
                     </DropdownToggle>
-                    {/* <DropdownMenu className="dropdown-menu-xl">
+                    { <DropdownMenu className="dropdown-menu-xl">
                       <div className="dropdown-menu-inner">
                         <Media
                           className="d-flex align-items-center"
@@ -146,14 +146,14 @@ class DemoNavbar extends React.Component {
                           </Media>
                         </Media>
                       </div>
-                    </DropdownMenu> */}
+                    </DropdownMenu>}
                   </UncontrolledDropdown>
                   <UncontrolledDropdown nav>
                     <DropdownToggle nav>
                       <i className="ni ni-collection d-lg-none mr-1" />
-                      <span className="nav-link-inner--text">Examples</span>
+                      
                     </DropdownToggle>
-                    {/* <DropdownMenu>
+                    {<DropdownMenu>
                       <DropdownItem to="/landing-page" tag={Link}>
                         Landing
                       </DropdownItem>
@@ -166,10 +166,10 @@ class DemoNavbar extends React.Component {
                       <DropdownItem to="/register-page" tag={Link}>
                         Register
                       </DropdownItem>
-                    </DropdownMenu> */}
+                    </DropdownMenu> }
                   </UncontrolledDropdown>
                 </Nav>
-                {/* <Nav className="align-items-lg-center ml-lg-auto" navbar>
+                { <Nav className="align-items-lg-center ml-lg-auto" navbar>
                   <NavItem>
                     <NavLink
                       className="nav-link-icon"
@@ -245,11 +245,11 @@ class DemoNavbar extends React.Component {
                         <i className="fa fa-cloud-download mr-2" />
                       </span>
                       <span className="nav-link-inner--text ml-1">
-                        Download
+                        MAKE A TIER LIST
                       </span>
                     </Button>
                   </NavItem>
-                </Nav> */}
+                </Nav> }
               </UncontrolledCollapse>
             </Container>
           </Navbar>

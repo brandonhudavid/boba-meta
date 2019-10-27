@@ -1,9 +1,11 @@
-import React from "react"
+import React from "react";
 import Navbar from "./Navbar.js";
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, { Marker } from 'react-map-gl';
+import "mapbox-gl/dist/mapbox-gl.css";
+import styles from "./geocoder-input.css";
+import Footer from './Footer.js';
 import Geocoder from 'react-map-gl-geocoder'
 import KEYS, { MAPBOX_TOKEN, YELP_KEY } from '../KEYS'
-import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import axios from 'axios';
 import { BrowserRouter as Route, Link } from "react-router-dom";
@@ -13,13 +15,13 @@ class MakeTierListMap extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currLatitude: 37.8719034,
-            currLongitude: -122.2607286,
+            currLatitude: 33.8624465,
+            currLongitude: -118.0875633,
             viewport: {
                 width: "100%",
-                height: "100vh",
-                latitude: 37.8719034,
-                longitude: -122.2607286,
+                height: "80vh",
+                latitude: 33.8624465,
+                longitude: -118.0875633,
                 zoom: 15
             },
             shopsData: {}
@@ -88,19 +90,27 @@ class MakeTierListMap extends React.Component {
                             {...this.state.viewport}
                             onViewportChange={this.handleViewportChange}
                         >
-                            <Geocoder style={{
-                                    position: "absolute",
-                                    top: 800,
-                                }}
+                            <Geocoder
                                 mapRef={this.mapRef}
                                 onViewportChange={this.handleGeocoderViewportChange}
                                 mapboxApiAccessToken={MAPBOX_TOKEN}
-                                position="right"
                             />
+                        <Marker latitude={this.state.currLatitude} 
+                        longitude={this.state.currLongitude} 
+                        offsetLeft={-20} 
+                        offsetTop={-10}>
+                            <div><img 
+                            src={require("assets/img/icons/common/location-pin.svg")}
+                            style={{
+                                height: "100px",
+                                width: "100px"
+                            }}></img></div>
+                        </Marker>
                         </ReactMapGL>
                         
                     </section>
                 </div>
+                <Footer/>
                 <Link to={"/shops"}>
                     <button style={{
                         position: "absolute",
