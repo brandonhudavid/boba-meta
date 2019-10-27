@@ -19,7 +19,55 @@ import React from "react";
 import { BrowserRouter as Route, Link } from "react-router-dom";
 
 // reactstrap components
-import { Button, Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Card, Button, CardImg, CardTitle, CardText, CardDeck,
+  CardSubtitle, CardBody } from "reactstrap";
+import styles from './hero-style.css';
+const Footer = (props) => {
+    return (
+        <div style={{width: "100%"}}></div>
+    );
+};
+const Example = (props) => {
+  return (
+    <CardDeck>
+      <Card>
+        <CardBody>
+          <div style={{height: "50px", width: "50px"}}>
+            <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+      </div>
+          <CardTitle>STEP 1</CardTitle>
+          <CardSubtitle>Input an address</CardSubtitle>
+          <CardText>We use an address to create location based  tier lists that we can then combine to find regional sources of truth.</CardText>
+          
+        </CardBody>
+      </Card>
+      <Card>
+        <CardBody>
+      <div style={{height: "50px", width: "50px"}}>
+            <i class="fa fa-magic fa-2x" aria-hidden="true"></i>
+
+      </div>
+          <CardTitle>STEP 2</CardTitle>
+          <CardSubtitle>Choose nearby stores to rank</CardSubtitle>
+          <CardText>We then search for nearby boba shops. You choose which ones you've been to and then rank them on a tier list!</CardText>
+          
+        </CardBody>
+      </Card>
+      <Card>
+        <CardBody>
+        <div style={{height: "50px", width: "50px"}}>
+            <i class="fa fa-balance-scale fa-2x" aria-hidden="true"></i>
+      </div>
+      
+          <CardTitle>STEP 3</CardTitle>
+          <CardSubtitle>Publish your own tier list</CardSubtitle>
+          <CardText>You'll then be able to see your tier list in both traditional and map forms (and can share with friends)! </CardText>
+          
+        </CardBody>
+      </Card>
+    </CardDeck>
+  );
+};
 
 class Hero extends React.Component {
   render() {
@@ -84,6 +132,7 @@ class Hero extends React.Component {
                       </Link>
                     </div>
                     {/* <div className="mt-5">
+
                       <small className="text-white font-weight-bold mb-0 mr-2">
                         *proudly coded by
                       </small>
@@ -98,6 +147,8 @@ class Hero extends React.Component {
                 </Row>
               </div>
             </Container>
+
+
             {/* SVG separator */}
             <div className="separator separator-bottom separator-skew zindex-100">
               <svg
@@ -115,7 +166,15 @@ class Hero extends React.Component {
               </svg>
             </div>
           </section>
+
         </div>
+        <h4 className="problem-statement">Boba tier lists are completely different region-to-region based on management, tastes, and trends. 
+        <br/>Boba Meta solves this inconsistency by combining individual tier lists into regional lists.</h4>
+          <div style={{width: "80%",margin: "auto",padding: "50px"}}>
+            
+          <Example/>
+          </div>
+
       </>
     );
   }
