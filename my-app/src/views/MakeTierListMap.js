@@ -1,12 +1,11 @@
 import React from "react";
+import styles from "./geocoder-input.css";
 import Navbar from "./Navbar.js";
 import ReactMapGL, { Marker } from 'react-map-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
-import styles from "./geocoder-input.css";
 import Footer from './Footer.js';
 import Geocoder from 'react-map-gl-geocoder'
 import KEYS, { MAPBOX_TOKEN, YELP_KEY } from '../KEYS'
-import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import axios from 'axios';
 import { BrowserRouter as Route, Link } from "react-router-dom";
 
