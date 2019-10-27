@@ -5,6 +5,11 @@ import { BrowserRouter as Route, Link } from "react-router-dom";
 
 
 export default class Footer extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <div className="progress-footer" >
@@ -14,7 +19,7 @@ export default class Footer extends React.Component {
           </span>
         <span className="footer-heading">Assign a location to your tier list</span>
           </h3>
-          <Link to={"/shops"}>
+          <Link to={this.props.link}>
           <Button className="next-button" size="lg" color="primary" type="button">
             <span className="btn-inner--text">PROCEED </span>
             <span className="btn-inner--icon">

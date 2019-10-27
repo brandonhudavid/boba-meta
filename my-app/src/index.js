@@ -60,6 +60,7 @@ class App extends React.Component {
     this.setState({
       shopsData: data
     })
+    
   }
 
   render() {

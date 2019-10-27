@@ -11,3 +11,10 @@
     border-color: #5e72e4;
     border-width: 3px;
 }
+
+.shopCardSelected {
+    border-color: #5e72e4;
+    border-width: 3px;
+    background-color: transparent;
+    background-image: none;
+}

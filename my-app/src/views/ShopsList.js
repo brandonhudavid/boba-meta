@@ -10,13 +10,35 @@ class ShopsList extends React.Component {
     constructor(props) {
         super(props)
         this.businesses = this.props.shopsData.businesses
+        var selectedArr = []
+        var numBusinesses = this.businesses.length
+        while (numBusinesses--) {
+            selectedArr.push(false)
+        }
+        this.state = {
+            shopsData: this.props.shopsData,
+            selectedShops: [],
+            selectedArr: selectedArr
+        }
+    }
+
+    selectShop(id, i) {
+        this.setState((prevState) => ({
+            selectedShops: [...prevState.selectedShops, id]
+        }))
+        var newSelectedArr = this.state.selectedArr
+        newSelectedArr[i] = true
+        this.setState({
+            selectedArr: newSelectedArr
+        })
     }
 
     renderCards() {
         return (
             <div style={{display: "block", width: "80%", margin: "0 auto", textAlign: "center"}}>
-                {this.businesses.map((business) => (
-                    <Card className="shopCard"
+                {this.businesses.map((business, i) => (
+                    <Card id={business.id} className={this.state.selectedArr[i] ? "shopCardSelected" : "shopCard"}
+                        onClick={() => this.selectShop(business.id, i)}
                         style={{width: "240px", height: "300px", margin: "20px 40px 20px 40px", display: "inline-block"}}>
                         <img
                             src={business.image_url} style={{width: "220px", height: "180px", objectFit: "cover"}} />
@@ -45,7 +67,7 @@ class ShopsList extends React.Component {
                                 </h6>
                             </CardBody>
                         </Card>
-                        <div style={{width: "50%", margin: "0 auto", marginTop: "2%", textAlign: "center"}}>
+                        <div style={{textAlign: "center"}}>
                             <h4 className="display-4 mb-0">
                                 We found {this.businesses.length} boba shops in your area.<br/>
                                 Select the ones you’d like to rank.

@@ -7,6 +7,7 @@ import Footer from './Footer.js';
 import Geocoder from 'react-map-gl-geocoder'
 import KEYS, { MAPBOX_TOKEN, YELP_KEY } from '../KEYS'
 import axios from 'axios';
+import { thisExpression } from "@babel/types";
 
 class MakeTierListMap extends React.Component {
 
@@ -21,8 +22,7 @@ class MakeTierListMap extends React.Component {
                 latitude: 33.8624465,
                 longitude: -118.0875633,
                 zoom: 15
-            },
-            shopsData: {}
+            }
         }
     }
 
@@ -108,7 +108,7 @@ class MakeTierListMap extends React.Component {
                         
                     </section>
                 </div>
-                <Footer />
+                <Footer link="/shops"/>
                 </main>
             </>
         )
