@@ -162,6 +162,7 @@ class ViewTierListMap extends React.Component {
                                 mapRef={this.mapRef}
                                 onViewportChange={this.handleGeocoderViewportChange}
                                 mapboxApiAccessToken={MAPBOX_TOKEN}
+                                placeholder="What's the boba meta of your hometown?"
                             />
                         <Marker latitude={this.state.currLatitude} 
                         longitude={this.state.currLongitude} 

@@ -92,6 +92,7 @@ class MakeTierListMap extends React.Component {
                                 mapRef={this.mapRef}
                                 onViewportChange={this.handleGeocoderViewportChange}
                                 mapboxApiAccessToken={MAPBOX_TOKEN}
+                                placeholder="Where's your favorite boba place?"
                             />
                         <Marker latitude={this.state.currLatitude} 
                         longitude={this.state.currLongitude} 
