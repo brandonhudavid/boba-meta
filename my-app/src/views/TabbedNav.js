@@ -93,11 +93,8 @@ class Navs extends React.Component {
                             D
                         </div><div className="tier-filler"/>
                     </div>
-                    <div className="tier-cell">
-                        <div className="tier-label tier-f">
-                            F
-                        </div><div className="tier-filler"/>
-                    </div>
+                    
+                        
               </TabPane>
               <TabPane tabId="tabs2">
                 <div className="tier-cell">
@@ -125,11 +122,7 @@ class Navs extends React.Component {
                             D
                         </div><div className="tier-filler"/><div className="tier-filler"/>
                     </div>
-                    <div className="tier-cell">
-                        <div className="tier-label tier-f">
-                            F
-                        </div><div className="tier-filler"/><div className="tier-filler"/>
-                    </div>
+                    
               </TabPane>
               
             </TabContent>

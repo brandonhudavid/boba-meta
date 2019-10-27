@@ -42,9 +42,9 @@ class ShopsList extends React.Component {
                 {this.businesses.map((business, i) => (
                     <Card id={business.id} className={this.state.selectedArr[i] ? "shopCardSelected" : "shopCard"}
                         onClick={() => this.selectShop(business, i)}
-                        style={{width: "240px", height: "300px", margin: "20px 40px 20px 40px", display: "inline-block"}}>
+                        style={{width: "240px", height: "300px", margin: "20px 40px 20px 40px", display: "inline-block", overflow: "hidden"}}>
                         <img
-                            src={business.image_url} style={{width: "220px", height: "180px", objectFit: "cover"}} />
+                            src={business.image_url} style={{width: "240px", height: "180px", objectFit: "cover"}} />
                         <CardBody style={{textAlign: "left"}}>
                             <b>{business.name}</b>
                             <p>{business.location.display_address.join(" ")}</p>
@@ -71,10 +71,10 @@ class ShopsList extends React.Component {
                             </CardBody>
                         </Card>
                         <div style={{textAlign: "center"}}>
-                            <h4 className="display-4 mb-0">
+                            <h3 className="display-4 mb-0" style={{margin: 50}}>
                                 We found {this.businesses.length} boba shops in your area.<br/>
                                 Select the ones you’d like to rank.
-                            </h4>
+                            </h3>
                         </div>
                         {this.renderCards()}
                     </section>

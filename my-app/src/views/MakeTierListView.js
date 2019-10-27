@@ -55,88 +55,93 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 };
 
 const grid = 8;
-
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
     padding: grid * 4,
+    margin: "20px",
     // margin: `0 0 ${grid}px 0`,
-
     // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
+    background: isDragging ? 'lightgreen' : '#ccc',
 
     // styles we need to apply on draggables
     ...draggableStyle
 });
 
 const getListStyle = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    background: isDraggingOver ? 'lightblue' : '#2C2E3B',
     padding: grid,
     width: "100%",
-    height: "100px",
+    height: "120px",
     display: "flex",
     position: "absolute",
     top: 80,
-    left: 120
+    left: 120,
+    border: '0.5px solid rgba(255,255,255,0.07)'
     
 });
 
 const getListStyle2 = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    background: isDraggingOver ? 'lightblue' : '#2C2E3B',
     padding: grid,
     position: "absolute",
     left: 120,
-    top: 180,
+    top: 200,
     width: "100%",
-    height: "100px",
+    height: "120px",
     display: "flex",
+    border: '0.5px solid rgba(255,255,255,0.07)'
     // marginTop: "10vh",
 });
 
 const getListStyle3 = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    background: isDraggingOver ? 'lightblue' : '#2C2E3B',
     padding: grid,
     width: "100%",
-    height: "100px",
+    height: "120px",
     display: "flex",
     // marginTop: "10vh",
     position: "absolute",
     left: 120,
-    top: 280,
+    top: 320,
+    border: '0.5px solid rgba(255,255,255,0.07)'
+
 });
 
 const getListStyle4 = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    background: isDraggingOver ? 'lightblue' : '#2C2E3B',
     padding: grid,
     width: "100%",
-    height: "100px",
+    height: "120px",
     display: "flex",
     // marginTop: "10vh",
     position: "absolute",
     left: 120,
-    top: 380,
+    top: 440,
+    border: '0.5px solid rgba(255,255,255,0.07)'
 });
 
 const getListStyle5 = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    background: isDraggingOver ? 'lightblue' : '#2C2E3B',
     padding: grid,
     width: "100%",
-    height: "100px",
+    height: "120px",
     display: "flex",
     // marginTop: "10vh",
     position: "absolute",
     left: 120,
-    top: 480,
+    top: 560,
+    border: '0.5px solid rgba(255,255,255,0.07)'
 });
 const getListStyle6 = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    background: isDraggingOver ? 'lightblue' : '#fff',
     padding: grid,
-    // width: "100%",
+    width: "100%",
     display: "flex",
-    // marginTop: "10vh",
     position: "absolute",
     left: 0,
-    top: 592,
+    top: 680,
+    border: '0.5px solid rgba(255,255,255,0.07)'
 });
 
 class MakeTierListView extends React.Component {
@@ -147,7 +152,8 @@ class MakeTierListView extends React.Component {
         console.log(this.shops)
         var shopComponents = []
         for (var i=0; i < this.shops.length; i++) {
-            var shopComponent = <ShopComponent id={this.shops[i].id}
+            var shopComponent =< ShopComponent 
+                id={this.shops[i].id}
                 name={this.shops[i].name}
                 img={this.shops[i].image_url} />
             shopComponents.push(shopComponent)
@@ -294,9 +300,14 @@ class MakeTierListView extends React.Component {
                 <Navbar />
                 <main ref="main">
                 <div className="position-relative">
-                    <section className="section section-lg section-hero section-shaped">
-                        <div className="shape shape-style-1 shape-default" style={{height: 80}} />  
+                 <section className="section section-lg section-hero section-shaped">                    
+
+                        
+                                <div className="list-creator">
+<div className="shape shape-style-1 shape-default" style={{height: 80}} /> 
+                    
                         <DragDropContext onDragEnd={this.onDragEnd}>
+
                 <div style={{height: "80vh"}}>
                     <Droppable droppableId="droppable" direction="horizontal">
                         {(provided, snapshot) => (
@@ -318,7 +329,9 @@ class MakeTierListView extends React.Component {
                                                     provided.draggableProps.style
                                                 )}>
                                                 {item.content}
-                                            </div>
+                                                <img src={this.shopComponents[this.key].props.img}/>
+                                                </div>
+                
                                         )}
                                     </Draggable>
                                 ))}
@@ -474,14 +487,19 @@ class MakeTierListView extends React.Component {
             </DragDropContext>
             {/* <button onClick={() => this.writeToDB()}>HIIIIIIII</button> */}
             
-            <div class="color-box1" style={{backgroundColor: "#FF850A"}}></div>
-            <div class="color-box2" style={{backgroundColor: "#FF850A"}}></div>
-            <div class="color-box3" style={{backgroundColor: "#FF850A"}}></div>
-            <div class="color-box4" style={{backgroundColor: "#FF850A"}}></div>
-            <div class="color-box5" style={{backgroundColor: "#FF850A"}}></div>
-                    </section>
+            <div class="color-box1 tier-label" style={{backgroundColor: "#F40E6F"}}>S</div>
+            <div class="color-box2 tier-label" style={{backgroundColor: "#FF4D00"}}>A</div>
+            <div class="color-box3 tier-label" style={{backgroundColor: "#FF9900"}}>B</div>
+            <div class="color-box4 tier-label" style={{backgroundColor: "#FFD600"}}>C</div>
+            <div class="color-box5 tier-label" style={{backgroundColor: "#00DA7E"}}>D</div>
+                </div>                 
+                <div className ="shop-column">
+
                 </div>
-                <Footer link="/thanks" progress = '100' complete={this.writeToDB}/>
+
+</section>
+                </div>
+                <Footer link="/thanks" progress = '80' complete={this.writeToDB} copy = "Rank your selected shops into the tiers they belong in."/>
                 </main>
             </>
         )
