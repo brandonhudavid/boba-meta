@@ -39,14 +39,12 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 };
 
 const grid = 8;
-
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
     padding: grid * 4,
     margin: "20px",
     // margin: `0 0 ${grid}px 0`,
-
     // change background colour if dragging
     background: isDragging ? 'lightgreen' : '#ccc',
 
@@ -138,7 +136,8 @@ class MakeTierListView extends React.Component {
         console.log(this.shops)
         var shopComponents = []
         for (var i=0; i < this.shops.length; i++) {
-            var shopComponent = <ShopComponent id={this.shops[i].id}
+            var shopComponent =< ShopComponent 
+                id={this.shops[i].id}
                 name={this.shops[i].name}
                 img={this.shops[i].image_url} />
             shopComponents.push(shopComponent)
@@ -293,7 +292,9 @@ class MakeTierListView extends React.Component {
                                                     provided.draggableProps.style
                                                 )}>
                                                 {item.content}
-                                            </div>
+                                                <img src={this.shopComponents[this.key].props.img}/>
+                                                </div>
+                
                                         )}
                                     </Draggable>
                                 ))}
