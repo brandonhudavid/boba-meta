@@ -92,6 +92,7 @@ class DemoNavbar extends React.Component {
                   
                   
                   <NavItem className="d-none d-lg-block ml-lg-4">
+                  <Link to={"/make"}>
                     <Button
                       className="btn-neutral btn-icon"
                       color="default"
@@ -105,6 +106,7 @@ class DemoNavbar extends React.Component {
                         MAKE A TIER LIST
                       </span>
                     </Button>
+                    </Link>
                   </NavItem>
                 </Nav> }
               </UncontrolledCollapse>
