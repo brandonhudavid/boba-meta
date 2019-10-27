@@ -12,8 +12,8 @@
     display: inline-block;
     background-color: #ccc;
     position: absolute;
-    left: 5px;
-    top: 5px;
+    left: 0;
+    top: 80px;
 }
 .color-box2 {
     width: 100px;
@@ -21,8 +21,8 @@
     display: inline-block;
     background-color: #ccc;
     position: absolute;
-    left: 5px;
-    top: 130px;
+    left: 0;
+    top: 180px;
 }
 .color-box3 {
     width: 100px;
@@ -30,8 +30,8 @@
     display: inline-block;
     background-color: #ccc;
     position: absolute;
-    left: 5px;
-    top: 260px;
+    left: 0;
+    top: 280px;
 }
 .color-box4 {
     width: 100px;
@@ -39,8 +39,8 @@
     display: inline-block;
     background-color: #ccc;
     position: absolute;
-    left: 5px;
-    top: 390px;
+    left: 0;
+    top: 380px;
 }
 .color-box5 {
     width: 100px;
@@ -48,6 +48,6 @@
     display: inline-block;
     background-color: #ccc;
     position: absolute;
-    left: 5px;
-    top: 520px;
+    left: 0;
+    top: 480px;
 }

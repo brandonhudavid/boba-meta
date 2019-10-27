@@ -31,6 +31,8 @@ import Register from "views/examples/Register.jsx";
 import MakeTierListMap from "views/MakeTierListMap";
 import ShopsList from "views/ShopsList"
 import TierListView from "views/TierListView"
+import MakeTierListView from "views/MakeTierListView"
+import { updateShorthandPropertyAssignment } from "typescript";
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -52,16 +54,24 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      shopsData: {}
+      shopsData: {},
+      selectedShops: []
     }
     this.updateData = this.updateData.bind(this)
+    this.updateShops = this.updateShops.bind(this)
   }
 
   updateData(data) {
     this.setState({
       shopsData: data
     })
-    
+  }
+
+  updateShops(business) {
+    this.setState((prevState) => ({
+      selectedShops: [...prevState.selectedShops, business]
+    }))
+    console.log(this.state.selectedShops)
   }
 
   render() {
@@ -89,6 +99,11 @@ class App extends React.Component {
             path="/tier-list"
             component={TierListView}
           />
+        <PropsRoute
+            path="/make-tier-list"
+            component={MakeTierListView}
+            shops={this.state.selectedShops}
+          />
           <PropsRoute
             path="/make"
             component={MakeTierListMap}
@@ -98,6 +113,7 @@ class App extends React.Component {
             path="/shops"
             component={ShopsList}
             shopsData={this.state.shopsData}
+            updateShops={this.updateShops}
             />
             
           <Redirect to="/" />

@@ -20,7 +20,7 @@ export default class Footer extends React.Component {
           </span>
         <span className="footer-heading">{this.props.copy}</span>
           </h3>
-          <Link to="/shops">
+          <Link to={this.props.link}>
           <Button className="next-button" size="lg" color="primary" type="button">
             <span className="btn-inner--text">PROCEED </span>
             <span className="btn-inner--icon">
