@@ -29,6 +29,7 @@ import Login from "views/examples/Login.jsx";
 import Profile from "views/examples/Profile.jsx";
 import Register from "views/examples/Register.jsx";
 import MakeTierListMap from "views/MakeTierListMap";
+import ShopsList from "views/ShopsList"
 
 ReactDOM.render(
   <BrowserRouter>
@@ -52,8 +53,10 @@ ReactDOM.render(
       />
       <Route
         path="/make"
-        component={MakeTierListMap} />}
-      />
+        component={MakeTierListMap} />
+      <Route 
+        path="/shops"
+        component={ShopsList} />
       <Redirect to="/" />
     </Switch>
   </BrowserRouter>,
