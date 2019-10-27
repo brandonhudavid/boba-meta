@@ -60,7 +60,7 @@ class ShopsList extends React.Component {
             <>
                 <Navbar />
                 <main ref="main">
-                <div className="position-relative">
+                <div className="position-relative" style={{paddingBottom: "160px"}}>
                     <section className="section section-lg section-hero section-shaped">
                         <div className="shape shape-style-1 shape-default" style={{height: 80}} />  
                         <Card className="shadow" style={{width: "32%", margin: "0 auto", marginTop: "16px"}}>

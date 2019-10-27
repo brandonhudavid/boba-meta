@@ -3,7 +3,7 @@ import Navbar from "./Navbar.js";
 import Footer from './Footer.js';
 import "assets/css/TierList.css"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import ShopComponent from "./ShopComponent.js";
+// import ShopComponent from "./ShopComponent.js";
 // import firebase from "firebase"
 
 // const config = {
@@ -58,8 +58,8 @@ const grid = 8;
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
-    padding: grid * 4,
-    margin: "20px",
+    padding: grid,
+    margin: `0 8px 0 8px`,
     // margin: `0 0 ${grid}px 0`,
     // change background colour if dragging
     background: isDragging ? 'lightgreen' : '#ccc',
@@ -152,10 +152,11 @@ class MakeTierListView extends React.Component {
         console.log(this.shops)
         var shopComponents = []
         for (var i=0; i < this.shops.length; i++) {
-            var shopComponent =< ShopComponent 
-                id={this.shops[i].id}
-                name={this.shops[i].name}
-                img={this.shops[i].image_url} />
+            var shopComponent = { 
+                id: this.shops[i].id,
+                name: this.shops[i].name,
+                img: this.shops[i].image_url
+            }
             shopComponents.push(shopComponent)
         }
         // console.log("shopComponents arr")
@@ -281,7 +282,7 @@ class MakeTierListView extends React.Component {
         for (var row=0; row < 5; row++) {
             var curr = [...rowName[row]]
             for (var i=0; i < curr.length; i++) {
-                var propsId = curr[i].props.id
+                var propsId = curr[i].id
                 var docRef = this.props.shopIds.doc(propsId)
                 batch.set(docRef, {
                     score: 4 - row,
@@ -317,7 +318,7 @@ class MakeTierListView extends React.Component {
                                 {this.state.d1.map((item, index) => (
                                     <Draggable
                                         key={item.id}
-                                        draggableId={item.props.id}
+                                        draggableId={item.id}
                                         index={index}>
                                         {(provided, snapshot) => (
                                             <div
@@ -326,10 +327,12 @@ class MakeTierListView extends React.Component {
                                                 {...provided.dragHandleProps}
                                                 style={getItemStyle(
                                                     snapshot.isDragging,
-                                                    provided.draggableProps.style
+                                                    provided.draggableProps.style,
                                                 )}>
-                                                {item.content}
-                                                <img src={this.shopComponents[this.key].props.img}/>
+                                                <div>
+                                                    <img src={item.img} style={{width: "100px", height: "60px", objectFit: "cover"}}/>
+                                                    <p style={{whiteSpace: `nowrap`, overflow: `hidden`, textOverflow: `ellipsis`}}>{item.name}</p>
+                                                </div>
                                                 </div>
                 
                                         )}
@@ -349,7 +352,7 @@ class MakeTierListView extends React.Component {
                             {this.state.d2.map((item, index) => (
                                 <Draggable
                                     key={item.id}
-                                    draggableId={item.props.id}
+                                    draggableId={item.id}
                                     index={index}>
                                     {(provided, snapshot) => (
                                         <div
@@ -358,10 +361,13 @@ class MakeTierListView extends React.Component {
                                             {...provided.dragHandleProps}
                                             style={getItemStyle(
                                                 snapshot.isDragging,
-                                                provided.draggableProps.style
+                                                provided.draggableProps.style,
                                             )}>
-                                            {item.content}
-                                        </div>
+                                            <div>
+                                                    <img src={item.img} style={{width: "100px", height: "60px", objectFit: "cover"}}/>
+                                                    <p style={{whiteSpace: `nowrap`, overflow: `hidden`, textOverflow: `ellipsis`}}>{item.name}</p>
+                                                </div>
+                                            </div>
                                     )}
                                 </Draggable>
                             ))}
@@ -378,7 +384,7 @@ class MakeTierListView extends React.Component {
                                 {this.state.d3.map((item, index) => (
                                     <Draggable
                                         key={item.id}
-                                        draggableId={item.props.id}
+                                        draggableId={item.id}
                                         index={index}>
                                         {(provided, snapshot) => (
                                             <div
@@ -387,10 +393,13 @@ class MakeTierListView extends React.Component {
                                                 {...provided.dragHandleProps}
                                                 style={getItemStyle(
                                                     snapshot.isDragging,
-                                                    provided.draggableProps.style
+                                                    provided.draggableProps.style,
                                                 )}>
-                                                {item.content}
-                                            </div>
+                                                <div>
+                                                    <img src={item.img} style={{width: "100px", height: "60px", objectFit: "cover"}}/>
+                                                    <p style={{whiteSpace: `nowrap`, overflow: `hidden`, textOverflow: `ellipsis`}}>{item.name}</p>
+                                                </div>
+                                                </div>
                                         )}
                                     </Draggable>
                                 ))}
@@ -407,7 +416,7 @@ class MakeTierListView extends React.Component {
                                 {this.state.d4.map((item, index) => (
                                     <Draggable
                                         key={item.id}
-                                        draggableId={item.props.id}
+                                        draggableId={item.id}
                                         index={index}>
                                         {(provided, snapshot) => (
                                             <div
@@ -416,10 +425,13 @@ class MakeTierListView extends React.Component {
                                                 {...provided.dragHandleProps}
                                                 style={getItemStyle(
                                                     snapshot.isDragging,
-                                                    provided.draggableProps.style
+                                                    provided.draggableProps.style,
                                                 )}>
-                                                {item.content}
-                                            </div>
+                                                <div>
+                                                    <img src={item.img} style={{width: "100px", height: "60px", objectFit: "cover"}}/>
+                                                    <p style={{whiteSpace: `nowrap`, overflow: `hidden`, textOverflow: `ellipsis`}}>{item.name}</p>
+                                                </div>
+                                                </div>
                                         )}
                                     </Draggable>
                                 ))}
@@ -436,7 +448,7 @@ class MakeTierListView extends React.Component {
                                 {this.state.d5.map((item, index) => (
                                     <Draggable
                                         key={item.id}
-                                        draggableId={item.props.id}
+                                        draggableId={item.id}
                                         index={index}>
                                         {(provided, snapshot) => (
                                             <div
@@ -445,10 +457,13 @@ class MakeTierListView extends React.Component {
                                                 {...provided.dragHandleProps}
                                                 style={getItemStyle(
                                                     snapshot.isDragging,
-                                                    provided.draggableProps.style
+                                                    provided.draggableProps.style,
                                                 )}>
-                                                {item.content}
-                                            </div>
+                                                <div>
+                                                    <img src={item.img} style={{width: "100px", height: "60px", objectFit: "cover"}}/>
+                                                    <p style={{whiteSpace: `nowrap`, overflow: `hidden`, textOverflow: `ellipsis`}}>{item.name}</p>
+                                                </div>
+                                                </div>
                                         )}
                                     </Draggable>
                                 ))}
@@ -464,7 +479,7 @@ class MakeTierListView extends React.Component {
                                 {this.state.d6.map((item, index) => (
                                     <Draggable
                                         key={item.id}
-                                        draggableId={item.props.id}
+                                        draggableId={item.id}
                                         index={index}>
                                         {(provided, snapshot) => (
                                             <div
@@ -473,10 +488,13 @@ class MakeTierListView extends React.Component {
                                                 {...provided.dragHandleProps}
                                                 style={getItemStyle(
                                                     snapshot.isDragging,
-                                                    provided.draggableProps.style
+                                                    provided.draggableProps.style,
                                                 )}>
-                                                {item.content}
-                                            </div>
+                                                <div>
+                                                    <img src={item.img} style={{width: "100px", height: "60px", objectFit: "cover"}}/>
+                                                    <p style={{whiteSpace: `nowrap`, overflow: `hidden`, textOverflow: `ellipsis`}}>{item.name}</p>
+                                                </div>
+                                                </div>
                                         )}
                                     </Draggable>
                                 ))}

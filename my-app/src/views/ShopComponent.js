@@ -6,11 +6,12 @@ export class ShopComponent extends React.Component {
         console.log("iamge url")
         console.log(this.props.img)
         return (
-            <div style={{width: "100px", height: "100px", margin: "0 auto"}}>     
+            // <div style={{width: "100px", height: "100px", margin: "0 auto"}}>    
+            <div> 
                 <img src={this.props.img} style={{width: "100px", height: "100px", objectFit: "cover"}} />
-                <p style={{backgroundColor: "white", position: "absolute", textAlign: "center", bottom: "20px", left: "50px" }}>
+                {/* <p style={{backgroundColor: "white", position: "absolute", textAlign: "center", bottom: "20px", left: "50px" }}>
                     {this.props.name}
-                </p>
+                </p> */}
             </div>
         )
     }
