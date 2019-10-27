@@ -109,13 +109,6 @@ class MakeTierListMap extends React.Component {
                     </section>
                 </div>
                 <Footer />
-                {/* <Link to={"/shops"}>
-                    <button style={{
-                        position: "absolute",
-                        bottom: "4%",
-                        right: "4%"
-                    }}>Next</button>
-                </Link> */}
                 </main>
             </>
         )
