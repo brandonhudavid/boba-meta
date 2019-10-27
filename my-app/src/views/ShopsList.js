@@ -24,15 +24,16 @@ class ShopsList extends React.Component {
         }
     }
 
-    selectShop(id, i) {
+    selectShop(business, i) {
         this.setState((prevState) => ({
-            selectedShops: [...prevState.selectedShops, id]
+            selectedShops: [...prevState.selectedShops, business]
         }))
         var newSelectedArr = this.state.selectedArr
         newSelectedArr[i] = true
         this.setState({
             selectedArr: newSelectedArr
         })
+        this.props.updateShops(business)
     }
 
     renderCards() {
@@ -40,7 +41,7 @@ class ShopsList extends React.Component {
             <div style={{display: "block", width: "80%", margin: "0 auto", textAlign: "center"}}>
                 {this.businesses.map((business, i) => (
                     <Card id={business.id} className={this.state.selectedArr[i] ? "shopCardSelected" : "shopCard"}
-                        onClick={() => this.selectShop(business.id, i)}
+                        onClick={() => this.selectShop(business, i)}
                         style={{width: "240px", height: "300px", margin: "20px 40px 20px 40px", display: "inline-block"}}>
                         <img
                             src={business.image_url} style={{width: "220px", height: "180px", objectFit: "cover"}} />
@@ -78,7 +79,9 @@ class ShopsList extends React.Component {
                         {this.renderCards()}
                     </section>
                 </div>
-                <Footer progress = '67' copy="Select nearby shops to rank on a tier list."/>
+
+
+                <Footer link="make-tier-list" progress = '67' copy="Select nearby shops to rank on a tier list."/>
                 </main>
             </>
         )

@@ -108,7 +108,7 @@ class MakeTierListMap extends React.Component {
                         
                     </section>
                 </div>
-                <Footer progress="33" copy="Input an address to associate with this tier list"/>
+                <Footer link="/shops" progress="33" copy="Input an address to associate with this tier list"/>
                 </main>
             </>
         )
