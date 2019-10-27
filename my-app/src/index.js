@@ -30,6 +30,7 @@ import Profile from "views/examples/Profile.jsx";
 import Register from "views/examples/Register.jsx";
 import MakeTierListMap from "views/MakeTierListMap";
 import ShopsList from "views/ShopsList"
+import TierListView from "views/TierListView"
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -83,6 +84,10 @@ class App extends React.Component {
             exact
             render={props => <Register {...props} />}
           />
+        <Route
+            path="/tier-list"
+            component={TierListView}
+          />
           <PropsRoute
             path="/make"
             component={MakeTierListMap}
@@ -93,6 +98,7 @@ class App extends React.Component {
             component={ShopsList}
             shopsData={this.state.shopsData}
             />
+            
           <Redirect to="/" />
         </Switch>
       </BrowserRouter>
