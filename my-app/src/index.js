@@ -32,7 +32,9 @@ import MakeTierListMap from "views/MakeTierListMap";
 import ShopsList from "views/ShopsList"
 import TierListView from "views/TierListView"
 import MakeTierListView from "views/MakeTierListView"
-import { updateShorthandPropertyAssignment } from "typescript";
+import Thanks from "views/Thanks"
+import ViewTierListMap from "views/ViewTierListMap"
+import firebase from "firebase"
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -49,6 +51,21 @@ const PropsRoute = ({component, ...rest}) => {
   );
 }
 
+const config = {
+  apiKey: "AIzaSyAS5cXTp5z0_Dj4BcgCicQ7ptfUISaPdSE",
+  authDomain: "boba-meta.firebaseapp.com",
+  databaseURL: "https://boba-meta.firebaseio.com",
+  projectId: "boba-meta",
+  storageBucket: "boba-meta.appspot.com",
+  messagingSenderId: "155954178622",
+  appId: "1:155954178622:web:c226c1657d2fa3a03f7f6f",
+  measurementId: "G-KPWDH4SWGP"
+}
+
+firebase.initializeApp(config)
+var db = firebase.firestore()
+var shopIds = db.collection("shopIds");
+
 class App extends React.Component {
 
   constructor(props) {
@@ -59,6 +76,7 @@ class App extends React.Component {
     }
     this.updateData = this.updateData.bind(this)
     this.updateShops = this.updateShops.bind(this)
+    // this.writeToDB = this.writeToDB.bind(this)
   }
 
   updateData(data) {
@@ -103,6 +121,9 @@ class App extends React.Component {
             path="/make-tier-list"
             component={MakeTierListView}
             shops={this.state.selectedShops}
+            shopIds={shopIds}
+            db={db}
+            // writeToDB={this.writeToDB}
           />
           <PropsRoute
             path="/make"
@@ -115,6 +136,15 @@ class App extends React.Component {
             shopsData={this.state.shopsData}
             updateShops={this.updateShops}
             />
+            <Route
+            path="/thanks"
+            component={Thanks}
+          />
+          <PropsRoute
+            path="/view"
+            component={ViewTierListMap}
+            shopIds={shopIds}
+          />
             
           <Redirect to="/" />
         </Switch>

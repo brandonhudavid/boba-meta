@@ -81,7 +81,7 @@ class ShopsList extends React.Component {
                 </div>
 
 
-                <Footer link="make-tier-list" progress = '67' copy="Select nearby shops to rank on a tier list."/>
+                <Footer link="/make-tier-list" complete={() => console.log("")} progress = '67' copy="Select nearby shops to rank on a tier list."/>
                 </main>
             </>
         )
