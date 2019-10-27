@@ -50,6 +50,7 @@ class Hero extends React.Component {
                       Your single source of truth for all things boba.
                     </p>
                     <div className="btn-wrapper mt-5">
+                    <Link to={"/view"}>
                       <Button
                         className="btn-white btn-icon mb-3 mb-sm-0"
                         color="default"
@@ -63,6 +64,7 @@ class Hero extends React.Component {
                             THE BOBA META
                         </span>
                       </Button>{" "}
+                      </Link>
                       <Link to={"/make"}>
                         <Button
                             className="btn-icon mb-3 mb-sm-0"

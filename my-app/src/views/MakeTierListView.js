@@ -4,6 +4,22 @@ import Footer from './Footer.js';
 import "assets/css/TierList.css"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import ShopComponent from "./ShopComponent.js";
+// import firebase from "firebase"
+
+// const config = {
+//     apiKey: "AIzaSyAS5cXTp5z0_Dj4BcgCicQ7ptfUISaPdSE",
+//     authDomain: "boba-meta.firebaseapp.com",
+//     databaseURL: "https://boba-meta.firebaseio.com",
+//     projectId: "boba-meta",
+//     storageBucket: "boba-meta.appspot.com",
+//     messagingSenderId: "155954178622",
+//     appId: "1:155954178622:web:c226c1657d2fa3a03f7f6f",
+//     measurementId: "G-KPWDH4SWGP"
+// }
+
+// firebase.initializeApp(config)
+// var db = firebase.firestore()
+// var shopIds = db.collection("shopIds");
 
 // fake data generator
 const getItems = (count, offset = 0) =>
@@ -136,8 +152,8 @@ class MakeTierListView extends React.Component {
                 img={this.shops[i].image_url} />
             shopComponents.push(shopComponent)
         }
-        console.log("shopComponents arr")
-        console.log(shopComponents)
+        // console.log("shopComponents arr")
+        // console.log(shopComponents)
 
         this.state = {
             // d1: getItems(1, 0),
@@ -152,6 +168,7 @@ class MakeTierListView extends React.Component {
             d5: [],
             d6: shopComponents
         };
+        this.writeToDB = this.writeToDB.bind(this)
     }
 
     /**
@@ -250,6 +267,26 @@ class MakeTierListView extends React.Component {
             }
         }
     };
+
+    writeToDB() {
+        console.log(this.state)
+        var rowName = [this.state.d1, this.state.d2, this.state.d3, this.state.d4, this.state.d5]
+        var batch = this.props.db.batch()
+        for (var row=0; row < 5; row++) {
+            var curr = [...rowName[row]]
+            for (var i=0; i < curr.length; i++) {
+                var propsId = curr[i].props.id
+                var docRef = this.props.shopIds.doc(propsId)
+                batch.set(docRef, {
+                    score: 4 - row,
+                    numVotes: 1
+                })
+            }
+        }
+        batch.commit().then(function () {
+            console.log("batch committed")
+        });
+    }
 
     render() {
         return (
@@ -435,6 +472,7 @@ class MakeTierListView extends React.Component {
                         )}
                     </Droppable>
             </DragDropContext>
+            {/* <button onClick={() => this.writeToDB()}>HIIIIIIII</button> */}
             
             <div class="color-box1" style={{backgroundColor: "#FF850A"}}></div>
             <div class="color-box2" style={{backgroundColor: "#FF850A"}}></div>
@@ -443,7 +481,7 @@ class MakeTierListView extends React.Component {
             <div class="color-box5" style={{backgroundColor: "#FF850A"}}></div>
                     </section>
                 </div>
-                <Footer link="make-tier-list" progress = '100'/>
+                <Footer link="/thanks" progress = '100' complete={this.writeToDB}/>
                 </main>
             </>
         )
