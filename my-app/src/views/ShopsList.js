@@ -12,15 +12,8 @@ class ShopsList extends React.Component {
     constructor(props) {
         super(props)
         this.businesses = this.props.shopsData.businesses
-        
         var selectedArr = []
-        if (typeof this.business == 'undefined'){
-            var numBusinesses = 0;
-
-        } else {
-            var numBusinesses = this.businesses.length
-        }
-        this.numBusinesses = numBusinesses
+        var numBusinesses = this.businesses.length
         while (numBusinesses--) {
             selectedArr.push(false)
         }
@@ -44,25 +37,22 @@ class ShopsList extends React.Component {
     }
 
     renderCards() {
-        if (typeof this.business != 'undefined'){
-
-            return (
-                <div style={{display: "block", width: "80%", margin: "0 auto", textAlign: "center"}}>
-                    {this.businesses.map((business, i) => (
-                        <Card id={business.id} className={this.state.selectedArr[i] ? "shopCardSelected" : "shopCard"}
-                            onClick={() => this.selectShop(business, i)}
-                            style={{width: "240px", height: "300px", margin: "20px 40px 20px 40px", display: "inline-block", overflow: "hidden"}}>
-                            <img
-                                src={business.image_url} style={{width: "240px", height: "180px", objectFit: "cover"}} />
-                            <CardBody style={{textAlign: "left"}}>
-                                <b>{business.name}</b>
-                                <p>{business.location.display_address.join(" ")}</p>
-                            </CardBody>
-                        </Card>
-                    ))}
-                </div>
-            )
-        }
+        return (
+            <div style={{display: "block", width: "80%", margin: "0 auto", textAlign: "center"}}>
+                {this.businesses.map((business, i) => (
+                    <Card id={business.id} className={this.state.selectedArr[i] ? "shopCardSelected" : "shopCard"}
+                        onClick={() => this.selectShop(business, i)}
+                        style={{width: "240px", height: "300px", margin: "20px 40px 20px 40px", display: "inline-block", overflow: "hidden"}}>
+                        <img
+                            src={business.image_url} style={{width: "240px", height: "180px", objectFit: "cover"}} />
+                        <CardBody style={{textAlign: "left"}}>
+                            <b>{business.name}</b>
+                            <p>{business.location.display_address.join(" ")}</p>
+                        </CardBody>
+                    </Card>
+                ))}
+            </div>
+        )
     }
 
     render() {
@@ -82,7 +72,7 @@ class ShopsList extends React.Component {
                         </Card>
                         <div style={{textAlign: "center"}}>
                             <h3 className="display-4 mb-0" style={{margin: 50}}>
-                                We found {this.numBusinesses} boba shops in your area.<br/>
+                                We found {this.businesses.length} boba shops in your area.<br/>
                                 Select the ones you’d like to rank.
                             </h3>
                         </div>
