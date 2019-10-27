@@ -38,7 +38,7 @@ class ShopsList extends React.Component {
                 <div className="position-relative">
                     <section className="section section-lg section-hero section-shaped">
                         <div className="shape shape-style-1 shape-default" style={{height: 80}} />  
-                        <Card className="shadow" style={{width: "32%", margin: "0 auto"}}>
+                        <Card className="shadow" style={{width: "32%", margin: "0 auto", marginTop: "16px"}}>
                             <CardBody style={{textAlign: "center"}}>
                                 <h6 className="mb-0">
                                     2161 Allston Way, Berkeley, CA 94704

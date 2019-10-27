@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import styles from "./footer-style.css";
 import { Button } from "reactstrap";
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
 
 export default class Footer extends React.Component {
@@ -13,13 +14,15 @@ export default class Footer extends React.Component {
           </span>
         <span className="footer-heading">Assign a location to your tier list</span>
           </h3>
-        <Button className="next-button" size="lg" color="primary" type="button">
-          <span className="btn-inner--text">PROCEED </span>
-          <span className="btn-inner--icon">
-            <i className="ni ni-check-bold" />
-          </span>
-          
-        </Button>
+          <Link to={"/shops"}>
+          <Button className="next-button" size="lg" color="primary" type="button">
+            <span className="btn-inner--text">PROCEED </span>
+            <span className="btn-inner--icon">
+              <i className="ni ni-check-bold" />
+            </span>
+            
+          </Button>
+        </Link>
       </div>
     );
   }

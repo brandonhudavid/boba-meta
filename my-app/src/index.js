@@ -53,10 +53,10 @@ class App extends React.Component {
     this.state = {
       shopsData: {}
     }
-    this.updateShopsData = this.updateShopsData.bind(this)
+    this.updateData = this.updateData.bind(this)
   }
 
-  updateShopsData(data) {
+  updateData(data) {
     this.setState({
       shopsData: data
     })
@@ -86,7 +86,7 @@ class App extends React.Component {
           <PropsRoute
             path="/make"
             component={MakeTierListMap}
-            updateShopsData={this.updateShopsData}
+            updateData={this.updateData}
              />
           <PropsRoute 
             path="/shops"

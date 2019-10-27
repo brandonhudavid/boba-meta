@@ -7,7 +7,6 @@ import Footer from './Footer.js';
 import Geocoder from 'react-map-gl-geocoder'
 import KEYS, { MAPBOX_TOKEN, YELP_KEY } from '../KEYS'
 import axios from 'axios';
-import { BrowserRouter as Route, Link } from "react-router-dom";
 
 class MakeTierListMap extends React.Component {
 
@@ -49,7 +48,7 @@ class MakeTierListMap extends React.Component {
 
           axios.get(`${cors_api_host}https://api.yelp.com/v3/businesses/search`, config)
             .then(response => {
-                this.props.updateShopsData(response.data)
+                this.props.updateData(response.data)
             });
     }
 
@@ -109,14 +108,14 @@ class MakeTierListMap extends React.Component {
                         
                     </section>
                 </div>
-                <Footer/>
-                <Link to={"/shops"}>
+                <Footer />
+                {/* <Link to={"/shops"}>
                     <button style={{
                         position: "absolute",
                         bottom: "4%",
                         right: "4%"
                     }}>Next</button>
-                </Link>
+                </Link> */}
                 </main>
             </>
         )
