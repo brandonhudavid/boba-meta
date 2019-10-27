@@ -1,11 +1,14 @@
 import React from "react";
 import Navbar from "./Navbar.js";
 import ReactMapGL, { Marker } from 'react-map-gl';
-import Geocoder from 'react-map-gl-geocoder';
-import MAPBOX_TOKEN from '../KEYS';
 import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./geocoder-input.css";
 import Footer from './Footer.js';
+import Geocoder from 'react-map-gl-geocoder'
+import KEYS, { MAPBOX_TOKEN, YELP_KEY } from '../KEYS'
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import axios from 'axios';
+import { BrowserRouter as Route, Link } from "react-router-dom";
 
 class MakeTierListMap extends React.Component {
 
@@ -20,8 +23,33 @@ class MakeTierListMap extends React.Component {
                 latitude: 33.8624465,
                 longitude: -118.0875633,
                 zoom: 15
-            }
+            },
+            shopsData: {}
         }
+    }
+
+    async getBobaShops() {
+        console.log("getting boba shops")
+        const radius = 1600
+        const limit = 50
+        const latitude = this.state.viewport.latitude
+        const longitude = this.state.viewport.longitude
+
+        const config = {
+            headers: {'Authorization': `Bearer ${YELP_KEY}`},
+            params: {
+                categories: "bubbletea",
+                latitude: latitude,
+                longitude: longitude,
+                radius: radius,
+                limit: limit
+            }
+          }
+
+          const cors_api_host = 'https://cors-anywhere.herokuapp.com/'
+
+          axios.get(`${cors_api_host}https://api.yelp.com/v3/businesses/search`, config)
+            .then(response => this.setState({shopsData: response.data}));
     }
 
     mapRef = React.createRef()
@@ -39,6 +67,7 @@ class MakeTierListMap extends React.Component {
             currLatitude: viewport.latitude,
             currLongitude: viewport.longitude
         })
+        this.getBobaShops()
      
         return this.handleViewportChange({
           ...viewport,
@@ -54,12 +83,6 @@ class MakeTierListMap extends React.Component {
                 <div className="position-relative">
                     <section className="section section-lg section-hero section-shaped">
                         <div className="shape shape-style-1 shape-default" style={{height: 80}} />
-                        <div style={{
-                            position: "absolute", 
-                            right: 0, 
-                            top: 0}}>
-                        </div>
-
                         <ReactMapGL
                             mapboxApiAccessToken={MAPBOX_TOKEN}
                             ref={this.mapRef}
@@ -86,8 +109,14 @@ class MakeTierListMap extends React.Component {
                         
                     </section>
                 </div>
-                <Footer 
-                ></Footer>
+                <Footer/>
+                <Link to={"/shops"}>
+                    <button style={{
+                        position: "absolute",
+                        bottom: "4%",
+                        right: "4%"
+                    }}>Next</button>
+                </Link>
                 </main>
             </>
         )
