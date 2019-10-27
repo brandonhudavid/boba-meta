@@ -5,6 +5,8 @@ import {
     CardBody
   } from "reactstrap";
   import './ShopsList.css'
+import Footer from './Footer.js';
+
 
 class ShopsList extends React.Component {
     constructor(props) {
@@ -76,6 +78,7 @@ class ShopsList extends React.Component {
                         {this.renderCards()}
                     </section>
                 </div>
+                <Footer progress = '67'/>
                 </main>
             </>
         )

@@ -7,9 +7,9 @@ import Footer from './Footer.js';
 import Geocoder from 'react-map-gl-geocoder'
 import KEYS, { MAPBOX_TOKEN, YELP_KEY } from '../KEYS'
 import axios from 'axios';
-import { thisExpression } from "@babel/types";
+import TierListRightAlign from './TierListRightAlign.js';
 
-class MakeTierListMap extends React.Component {
+class TierListView extends React.Component {
 
     constructor(props) {
         super(props)
@@ -18,11 +18,12 @@ class MakeTierListMap extends React.Component {
             currLongitude: -118.0875633,
             viewport: {
                 width: "100%",
-                height: "80vh",
+                height: "100vh",
                 latitude: 33.8624465,
                 longitude: -118.0875633,
                 zoom: 15
-            }
+            },
+            shopsData: {}
         }
     }
 
@@ -88,11 +89,7 @@ class MakeTierListMap extends React.Component {
                             {...this.state.viewport}
                             onViewportChange={this.handleViewportChange}
                         >
-                            <Geocoder
-                                mapRef={this.mapRef}
-                                onViewportChange={this.handleGeocoderViewportChange}
-                                mapboxApiAccessToken={MAPBOX_TOKEN}
-                            />
+                            
                         <Marker latitude={this.state.currLatitude} 
                         longitude={this.state.currLongitude} 
                         offsetLeft={-20} 
@@ -108,7 +105,6 @@ class MakeTierListMap extends React.Component {
                         
                     </section>
                 </div>
-                <Footer progress="33" copy="Input an address to associate with this tier list"/>
                 </main>
             </>
         )
@@ -116,4 +112,4 @@ class MakeTierListMap extends React.Component {
 
 }
 
-export default MakeTierListMap
+export default TierListView
