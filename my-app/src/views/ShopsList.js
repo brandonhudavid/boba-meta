@@ -71,10 +71,10 @@ class ShopsList extends React.Component {
                             </CardBody>
                         </Card>
                         <div style={{textAlign: "center"}}>
-                            <h4 className="display-4 mb-0">
+                            <h3 className="display-4 mb-0" style={{margin: 50}}>
                                 We found {this.businesses.length} boba shops in your area.<br/>
                                 Select the ones you’d like to rank.
-                            </h4>
+                            </h3>
                         </div>
                         {this.renderCards()}
                     </section>
