@@ -8,7 +8,7 @@ import Geocoder from 'react-map-gl-geocoder'
 import KEYS, { MAPBOX_TOKEN, YELP_KEY } from '../KEYS'
 import axios from 'axios';
 import TierListRightAlign from './TierListRightAlign.js';
-
+import Navs from './TabbedNav.js';
 class TierListView extends React.Component {
 
     constructor(props) {
@@ -89,7 +89,7 @@ class TierListView extends React.Component {
                             {...this.state.viewport}
                             onViewportChange={this.handleViewportChange}
                         >
-                            
+                        <TierListRightAlign/>    
                         <Marker latitude={this.state.currLatitude} 
                         longitude={this.state.currLongitude} 
                         offsetLeft={-20} 

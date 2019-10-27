@@ -78,7 +78,7 @@ class ShopsList extends React.Component {
                         {this.renderCards()}
                     </section>
                 </div>
-                <Footer progress = '67'/>
+                <Footer progress = '67' copy="Select nearby shops to rank on a tier list."/>
                 </main>
             </>
         )

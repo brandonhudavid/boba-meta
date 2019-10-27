@@ -1,20 +1,22 @@
 import React, {PureComponent} from 'react';
 import { Button } from "reactstrap";
 import styles from "./list-right-align.css";
+import Navs from "./TabbedNav.js";
 
-export default class TierListRightAlign extends React.Component {
+export class TierListRightAlign extends React.Component {
+    constructor(props){
+        super(props)
+    }
   render() {
     return (
-        <div className="progress-footer" >
-        
-          <Button className="next-button" size="lg" color="primary" type="button">
-            <span className="btn-inner--text">PROCEED </span>
-            <span className="btn-inner--icon">
-              <i className="ni ni-check-bold" />
-            </span>
-            
-          </Button>
+        <div className="list-container" >
+          <Navs/>
+          <div>
+            <span className="tier-url">www.boba-meta.com/tier-list/830jku</span>
+        </div>
       </div>
     );
   }
 }
+
+export default TierListRightAlign;
