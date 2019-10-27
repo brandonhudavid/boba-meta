@@ -13,6 +13,8 @@ class MakeTierListMap extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            currLatitude: 37.8719034,
+            currLongitude: -122.2607286,
             viewport: {
                 width: "100%",
                 height: "100vh",
@@ -26,10 +28,10 @@ class MakeTierListMap extends React.Component {
 
     async getBobaShops() {
         console.log("getting boba shops")
-        const radius = 1600
-        const limit = 50
-        const latitude = this.state.viewport.latitude
-        const longitude = this.state.viewport.longitude
+        var radius = 1600
+        var limit = 50
+        var latitude = this.state.currLatitude
+        var longitude = this.state.currLongitude
 
         const config = {
             headers: {'Authorization': `Bearer ${YELP_KEY}`},
@@ -45,7 +47,9 @@ class MakeTierListMap extends React.Component {
           const cors_api_host = 'https://cors-anywhere.herokuapp.com/'
 
           axios.get(`${cors_api_host}https://api.yelp.com/v3/businesses/search`, config)
-            .then(response => this.setState({shopsData: response.data}));
+            .then(response => {
+                this.props.updateShopsData(response.data)
+            });
     }
 
     mapRef = React.createRef()
@@ -57,13 +61,17 @@ class MakeTierListMap extends React.Component {
       }
 
     handleGeocoderViewportChange = (viewport) => {
-        const geocoderDefaultOverrides = { transitionDuration: 1000 }
-        this.getBobaShops()
-     
-        return this.handleViewportChange({
+
+        const geocoderDefaultOverrides = { transitionDuration: 1000 }     
+        this.handleViewportChange({
           ...viewport,
           ...geocoderDefaultOverrides
         })
+        this.setState({
+            currLatitude: viewport.latitude,
+            currLongitude: viewport.longitude,
+        })
+        this.getBobaShops()
       }
 
     render() {

@@ -31,34 +31,74 @@ import Register from "views/examples/Register.jsx";
 import MakeTierListMap from "views/MakeTierListMap";
 import ShopsList from "views/ShopsList"
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/" exact render={props => <Index {...props} />} />
-      <Route
-        path="/landing-page"
-        exact
-        render={props => <Landing {...props} />}
-      />
-      <Route path="/login-page" exact render={props => <Login {...props} />} />
-      <Route
-        path="/profile-page"
-        exact
-        render={props => <Profile {...props} />}
-      />
-      <Route
-        path="/register-page"
-        exact
-        render={props => <Register {...props} />}
-      />
-      <Route
-        path="/make"
-        component={MakeTierListMap} />
-      <Route 
-        path="/shops"
-        component={ShopsList} />
-      <Redirect to="/" />
-    </Switch>
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+const renderMergedProps = (component, ...rest) => {
+  const finalProps = Object.assign({}, ...rest);
+  return (
+      React.createElement(component, finalProps)
+  );
+}
+
+const PropsRoute = ({component, ...rest}) => {
+  return (
+      <Route {...rest} render={routeProps => {
+          return renderMergedProps(component, routeProps, rest);
+      }}/>
+  );
+}
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      shopsData: {}
+    }
+    this.updateShopsData = this.updateShopsData.bind(this)
+  }
+
+  updateShopsData(data) {
+    this.setState({
+      shopsData: data
+    })
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact render={props => <Index {...props} />} />
+          <Route
+            path="/landing-page"
+            exact
+            render={props => <Landing {...props} />}
+          />
+          <Route path="/login-page" exact render={props => <Login {...props} />} />
+          <Route
+            path="/profile-page"
+            exact
+            render={props => <Profile {...props} />}
+          />
+          <Route
+            path="/register-page"
+            exact
+            render={props => <Register {...props} />}
+          />
+          <PropsRoute
+            path="/make"
+            component={MakeTierListMap}
+            updateShopsData={this.updateShopsData}
+             />
+          <PropsRoute 
+            path="/shops"
+            component={ShopsList}
+            shopsData={this.state.shopsData}
+            />
+          <Redirect to="/" />
+        </Switch>
+      </BrowserRouter>
+    )
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
